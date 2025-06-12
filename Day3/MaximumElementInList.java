@@ -16,7 +16,7 @@ public class MaximumElementInList {
         listOfElements.add(5);
         listOfElements.add(6);
         listOfElements.add(null);
-//Max function has limitation, if any null value added then
+        //Max function has limitation, if any null value added then
         //It breaks so max sure filter the null value before going to max function
         var result = listOfElements.stream().filter(Objects::nonNull).max(Integer::compareTo);
         System.out.println(result);
