@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class RemoveTheSpecialCharacter {
     public static boolean filter(Character ch){
-        return (ch>'a' && ch < 'z') || (ch>'A' && ch<'Z');
+        return (ch>='a' && ch <= 'z') || (ch>='A' && ch<='Z');
     }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
