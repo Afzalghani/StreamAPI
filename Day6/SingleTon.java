@@ -15,7 +15,7 @@ class Book{
     String author;
     String publisher;
     static Book b= null;
-    private  Book(String name, String author, String publisher) {
+    private   Book(String name, String author, String publisher) {
         this.name = name;
         this.author = author;
         this.publisher = publisher;
