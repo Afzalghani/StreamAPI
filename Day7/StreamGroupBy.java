@@ -1,27 +1,29 @@
 package Day7;
 
-import java.util.Arrays;
+import Day5.DepartmentTesting;
+import Day5.Person;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StreamGroupBy {
     public static void main(String[] args) {
-        List<String> names = Arrays.asList("John", "Alice", "Bob", "Jane");
-        Map<Integer, Long> countByNameLength = names
-                .stream()
-                .collect(Collectors.groupingBy(String::length, Collectors.counting()));// Group the element based on the length and count the String that match with the length
+        List<Person> personList= Person.getDefaultPeople();
 
-        System.out.println(countByNameLength);
+        var result = personList.stream().
+        collect(Collectors.groupingBy(person -> person.getDepartment().getName(),
+                Collectors.groupingBy(Person::getGender)));
+        System.out.println(result);
 
-        List<String> list = Arrays.asList("apple", null, "banana", null, "orange");
-        List<Optional<String>> optionalList = list.stream()
-                .map(Optional::ofNullable)
-                .collect(Collectors.toList());
+        result.forEach((department,gendermap)->{
+            System.out.println("Department: "+department);
+            gendermap.forEach(
+                    (gender,employeeList)->{
+                        System.out.println("Gender: "+gender);
+                        employeeList.forEach(System.out::println);
 
-        System.out.println(optionalList);
-
+                    }
+            );
+        });
 
     }
 
